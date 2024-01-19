@@ -34,6 +34,8 @@ public class Lab1P2_SheyllaCortez {
                     System.out.println("Ingrese su fecha de nacimiento [\"dd/MM/yyyy\"]: ");
                     entrada.nextLine();
                     String fNacer = entrada.nextLine();
+                    String correo = "";
+                    String contrasena = "";
                     String miFecha[] = fNacer.split("/");
                     String diaFecha = miFecha[0];
                     String mesFecha = miFecha[1];
@@ -52,7 +54,7 @@ public class Lab1P2_SheyllaCortez {
                             }
                         }
                     }
-                    Usuario miusu = new Usuario();
+                    Usuario miusu = new Usuario(fNacer, correo, contrasena);
                     listado.add(miusu);
                 }
                 case 2 -> {
