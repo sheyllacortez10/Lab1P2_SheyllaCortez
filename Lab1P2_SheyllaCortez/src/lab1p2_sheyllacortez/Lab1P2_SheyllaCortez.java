@@ -41,18 +41,18 @@ public class Lab1P2_SheyllaCortez {
                     int limiteano = ano - 13;
                     System.out.println(limiteano);
                     int mesAct = fecha.getMonth()+1;
-                    System.out.println(mesAct);
                     int diaAct = fecha.getDate();
-                    if (Integer.parseInt(anoFecha) > limiteano) {
-                        if (Integer.parseInt(mesFecha) > mesAct) {
-                             System.out.println("No es mayor de 13 ");
-                            if (Integer.parseInt(diaFecha) > diaAct) {
-                                System.out.println("Ingrese su fecha de nacimiento [\"dd/MM/yyyy\"]: ");
-                                fNacer = entrada.nextLine();
-                                System.out.println("No es mayor de 13 ");
-                            }
-                        }
-                    }
+//                    if ((ano - limiteano) > (ano - Integer.parseInt(anoFecha))) {
+//                        System.out.println("entra");
+//                        if (Integer.parseInt(mesFecha) >= mesAct) {
+//                             System.out.println("No es mayor de 13 ");
+//                            if (Integer.parseInt(diaFecha) > diaAct) {
+//                                System.out.println("Ingrese su fecha de nacimiento [\"dd/MM/yyyy\"]: ");
+//                                fNacer = entrada.nextLine();
+//                                System.out.println("No es mayor de 13 ");
+//                            }
+//                        }
+//                    }
           
                 }
                 case 2 -> {
