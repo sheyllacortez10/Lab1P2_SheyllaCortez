@@ -5,6 +5,7 @@
 package lab1p2_sheyllacortez;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -19,6 +20,7 @@ public class Lab1P2_SheyllaCortez {
      */
     static Scanner entrada = new Scanner(System.in);
     public static void main(String[] args) {
+        ArrayList<Usuario> listado = new ArrayList<>();
         int opcion = 1;
         while (opcion != 4) {
             System.out.println("Ingrese una opcion a ejecutar: ");
@@ -42,9 +44,8 @@ public class Lab1P2_SheyllaCortez {
                     System.out.println(limiteano);
                     int mesAct = fecha.getMonth() + 1;
                     int diaAct = fecha.getDate();
-                    while (limiteano < Integer.parseInt(anoFecha)) {
+                    if (Integer.parseInt(anoFecha) >= limiteano) {
                         if (Integer.parseInt(mesFecha) >= mesAct) {
-                            System.out.println("No es mayor de 13 ");
                             if (Integer.parseInt(diaFecha) > diaAct) {
                                 System.out.println("Ingrese su fecha de nacimiento [\"dd/MM/yyyy\"]: ");
                                 fNacer = entrada.nextLine();
@@ -53,7 +54,7 @@ public class Lab1P2_SheyllaCortez {
                     }
                 }
                 case 2 -> {
-
+                    listarUsuario(listado);
                 }
                 case 3 -> {
 
@@ -67,5 +68,13 @@ public class Lab1P2_SheyllaCortez {
             }
         }
     }
-    
+
+    //Método para listar los usuarios
+    public static void listarUsuario(ArrayList<Usuario> listado) {
+        System.out.println("Productos en el inventario ");
+        for (int i = 0; i < listado.size(); i++) {
+            System.out.println(i + ". " + listado.get(i).toString());
+        }
+    }
+
 }
