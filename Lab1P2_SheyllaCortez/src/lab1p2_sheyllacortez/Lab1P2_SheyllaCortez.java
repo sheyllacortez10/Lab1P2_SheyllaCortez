@@ -33,18 +33,25 @@ public class Lab1P2_SheyllaCortez {
                     entrada.nextLine();
                     String fNacer = entrada.nextLine();
                     String miFecha[] = fNacer.split("/");
-                    String aFecha = miFecha[0];
-                    String bFecha = miFecha[1];
-                    String cFecha = miFecha[2];
+                    String diaFecha = miFecha[0];
+                    String mesFecha = miFecha[1];
+                    String anoFecha = miFecha[2];
                     Date fecha = new Date();
-                    System.out.println(fecha);
-                    while (Integer.parseInt(cFecha) > 2011) {
-                        System.out.println("Ingrese su fecha de nacimiento [\"dd/MM/yyyy\"]: ");
-                        fNacer = entrada.nextLine();
+                    int ano = fecha.getYear() + 1900;
+                    int limiteano = ano - 13;
+                    int mesAct = fecha.getMonth()+1;
+                    int diaAct = fecha.getDate();
+                    while (Integer.parseInt(anoFecha) > limiteano) {
+                        if (Integer.parseInt(mesFecha) < mesAct) {
+                            if (Integer.parseInt(mesFecha) < diaAct) {
+                                System.out.println("Ingrese su fecha de nacimiento [\"dd/MM/yyyy\"]: ");
+                                fNacer = entrada.nextLine();
+                            }
+                        }
                     }
                 }
                 case 2 -> {
-
+                    
                 }
                 case 3 -> {
 
