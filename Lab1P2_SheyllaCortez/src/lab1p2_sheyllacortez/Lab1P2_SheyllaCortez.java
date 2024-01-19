@@ -44,7 +44,7 @@ public class Lab1P2_SheyllaCortez {
                     System.out.println(limiteano);
                     int mesAct = fecha.getMonth() + 1;
                     int diaAct = fecha.getDate();
-                    if (Integer.parseInt(anoFecha) >= limiteano) {
+                    if (Integer.parseInt(anoFecha) >= 2011) {
                         if (Integer.parseInt(mesFecha) >= mesAct) {
                             if (Integer.parseInt(diaFecha) > diaAct) {
                                 System.out.println("Ingrese su fecha de nacimiento [\"dd/MM/yyyy\"]: ");
@@ -52,6 +52,8 @@ public class Lab1P2_SheyllaCortez {
                             }
                         }
                     }
+                    Usuario miusu = new Usuario();
+                    listado.add(miusu);
                 }
                 case 2 -> {
                     listarUsuario(listado);
@@ -71,7 +73,7 @@ public class Lab1P2_SheyllaCortez {
 
     //Método para listar los usuarios
     public static void listarUsuario(ArrayList<Usuario> listado) {
-        System.out.println("Productos en el inventario ");
+        System.out.println("Usuarios registrados: ");
         for (int i = 0; i < listado.size(); i++) {
             System.out.println(i + ". " + listado.get(i).toString());
         }
