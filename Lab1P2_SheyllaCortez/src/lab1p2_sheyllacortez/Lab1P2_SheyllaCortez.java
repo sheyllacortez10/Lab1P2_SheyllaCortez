@@ -67,7 +67,7 @@ public class Lab1P2_SheyllaCortez {
                     
                     //Verificar si son o no validos los correos
                     if (!validarCorreo(correoElec)) {
-                        System.out.println("El correo electrónico no es válido.");
+                        System.out.println("El correo electrónico no es válido ");
                         return;
                     }
 
@@ -75,6 +75,40 @@ public class Lab1P2_SheyllaCortez {
                     if (repetidoCorreo(correoElec, listado)) {
                         System.out.println("Su correo ya existe ");
                         return;
+                    }
+
+                    //Validar que la contraseña tenga mas de 8 caracteres
+                    if (contrasena.length() < 8) {
+                        System.out.println("Su contrasena es muy corta ");
+                        System.out.println("Ingrese su contrasena: ");
+                        contrasena = entrada.nextLine();
+                    }
+
+                    //Verificar mayusculas de la contrasena
+                    boolean letterMayus = false;
+                    for (int i = 0; i < correoElec.length(); i++) {
+                        if (correoElec.charAt(i) >= 'A' && correoElec.charAt(i) <= 'Z') {
+                            letterMayus = true;
+                            break;
+                        }
+                    }
+                    if (!letterMayus) {
+                        System.out.println("Su contrasena no tuen letras mayusculas");
+                        System.out.println("Ingrese su contrasena: ");
+                        contrasena = entrada.nextLine();
+                    }
+
+                    boolean letterMinus = false;
+                    for (int i = 0; i < correoElec.length(); i++) {
+                        if (correoElec.charAt(i) >= 'a' && correoElec.charAt(i) <= 'z') {
+                            letterMinus = true;
+                            break;
+                        }
+                    }
+                    if (!letterMinus) {
+                        System.out.println("Contrasena no tiene letras minusculas ");;
+                        System.out.println("Ingrese su contrasena: ");
+                        contrasena = entrada.nextLine();
                     }
                     
                     //Si todos los factores requeridos son aceptables se crea el usuario
@@ -110,7 +144,7 @@ public class Lab1P2_SheyllaCortez {
     public static boolean validarCorreo(String correoElec) {
         for (int i = 0; i < correoElec.length(); i++) {
             char caracAscii = correoElec.charAt(i);
-            if ((caracAscii < 'a' || caracAscii > 'z') && (caracAscii < 'A' || caracAscii > 'Z') && (caracAscii < '0' || caracAscii > '9') && (caracAscii != '-') && (caracAscii != '_') && (caracAscii != '&') && (caracAscii != '$') && (caracAscii != '%') && (caracAscii != '@')) {
+            if ((caracAscii < 'a' || caracAscii > 'z') && (caracAscii < 'A' || caracAscii > 'Z') && (caracAscii < '0' || caracAscii > '9') && (caracAscii != '-') && (caracAscii != '_') && (caracAscii != '&') && (caracAscii != '$') && (caracAscii != '%') && (caracAscii != '@') && (caracAscii != '.')) {
                 return false;
             }
         }
