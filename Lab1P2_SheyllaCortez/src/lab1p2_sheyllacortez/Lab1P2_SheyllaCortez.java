@@ -26,7 +26,7 @@ public class Lab1P2_SheyllaCortez {
             System.out.println("Ingrese una opcion a ejecutar: ");
             System.out.println("1). Registrar Usuario ");
             System.out.println("2). Lista Todo ");
-            System.out.println("3). Listar Por Todo ");
+            System.out.println("3). Listar Por Dominio ");
             System.out.println("4). Salir del programa ");
             opcion = entrada.nextInt();
             switch (opcion) {
@@ -66,10 +66,17 @@ public class Lab1P2_SheyllaCortez {
                     }
                     
                     //Verificar si son o no validos los correos
-                    if (!esValido(correoElec)) {
+                    if (!validarCorreo(correoElec)) {
                         System.out.println("El correo electrónico no es válido.");
                         return;
                     }
+
+                    //Validar si el correo ya existe o no
+                    if (repetidoCorreo(correoElec, listado)) {
+                        System.out.println("Su correo ya existe ");
+                        return;
+                    }
+                    
                     //Si todos los factores requeridos son aceptables se crea el usuario
                     Usuario miusu = new Usuario(nombreUsu, apellidoUsu, fNacer, correoElec, contrasena);
                     listado.add(miusu);
@@ -100,13 +107,25 @@ public class Lab1P2_SheyllaCortez {
     }
 
     //Método para validar el correo electronico - boolean para jugar con valores true or false
-    private static boolean esValido(String correoElec) {
+    public static boolean validarCorreo(String correoElec) {
         for (int i = 0; i < correoElec.length(); i++) {
             char caracAscii = correoElec.charAt(i);
-            if ((caracAscii < 'a' || caracAscii > 'z') && (caracAscii < 'A' || caracAscii > 'Z') && (caracAscii < '0' || caracAscii > '9') && (caracAscii != '-') && (caracAscii != '_') && (caracAscii != '&') && (caracAscii != '$') && (caracAscii != '%')) {
+            if ((caracAscii < 'a' || caracAscii > 'z') && (caracAscii < 'A' || caracAscii > 'Z') && (caracAscii < '0' || caracAscii > '9') && (caracAscii != '-') && (caracAscii != '_') && (caracAscii != '&') && (caracAscii != '$') && (caracAscii != '%') && (caracAscii != '@')) {
                 return false;
             }
         }
         return true;
     }
+    
+    //Método para saber si el correo esta repetido en el arraylist
+    public static boolean repetidoCorreo(String correoElec, ArrayList<Usuario> listado){
+        for (int i = 0; i < listado.size(); i++) {
+            String caracCorreo = listado.get(i).getCorreo();
+            if (caracCorreo.equals(correoElec)) {
+                return true;
+            }
+        }
+        return false;
+    }
+   
 }

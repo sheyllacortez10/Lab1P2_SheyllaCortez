@@ -63,13 +63,12 @@ public class Usuario {
     public void setApellidoUsu(String apellidoUsu) {
         this.apellidoUsu = apellidoUsu;
     }
-    
-    
 
     @Override
     public String toString() {
-        return "Usuario{" + "fNacimiento=" + fNacimiento + ", correo=" + correo + ", contrasena=" + contrasena + '}';
+        return "Usuario{" + "nombreUsu=" + nombreUsu + ", apellidoUsu=" + apellidoUsu + ", fNacimiento=" + fNacimiento + ", correo=" + correo + ", contrasena=" + contrasena + '}';
     }
+    
     
     
     
