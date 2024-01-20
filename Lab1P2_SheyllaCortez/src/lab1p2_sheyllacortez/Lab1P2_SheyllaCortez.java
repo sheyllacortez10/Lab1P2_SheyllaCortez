@@ -31,11 +31,20 @@ public class Lab1P2_SheyllaCortez {
             opcion = entrada.nextInt();
             switch (opcion) {
                 case 1 -> {
-                    System.out.println("Ingrese su fecha de nacimiento [\"dd/MM/yyyy\"]: ");
+                    //Entradas
+                    System.out.println("Ingrese su nombre: ");
                     entrada.nextLine();
+                    String nombreUsu = entrada.nextLine();
+                    System.out.println("Ingrese su apellido: ");
+                    String apellidoUsu = entrada.nextLine();
+                    System.out.println("Ingrese su fecha de nacimiento [\"dd/MM/yyyy\"]: ");
                     String fNacer = entrada.nextLine();
-                    String correo = "";
-                    String contrasena = "";
+                    System.out.println("Ingrese su correo electronico ");
+                    String correoElec = entrada.nextLine();
+                    System.out.println("Ingrese su contrasena: ");
+                    String contrasena = entrada.nextLine();
+                    
+                    //Datos para validar la fecha de nacimiento
                     String miFecha[] = fNacer.split("/");
                     String diaFecha = miFecha[0];
                     String mesFecha = miFecha[1];
@@ -43,9 +52,10 @@ public class Lab1P2_SheyllaCortez {
                     Date fecha = new Date();
                     int ano = fecha.getYear() + 1900;
                     int limiteano = ano - 13;
-                    System.out.println(limiteano);
                     int mesAct = fecha.getMonth() + 1;
                     int diaAct = fecha.getDate();
+                    
+                    //Validar si el usuario es mayor de 13 años 
                     if (Integer.parseInt(anoFecha) >= 2011) {
                         if (Integer.parseInt(mesFecha) >= mesAct) {
                             if (Integer.parseInt(diaFecha) > diaAct) {
@@ -54,8 +64,16 @@ public class Lab1P2_SheyllaCortez {
                             }
                         }
                     }
-                    Usuario miusu = new Usuario(fNacer, correo, contrasena);
+                    
+                    //Verificar si son o no validos los correos
+                    if (!esValido(correoElec)) {
+                        System.out.println("El correo electrónico no es válido.");
+                        return;
+                    }
+                    //Si todos los factores requeridos son aceptables se crea el usuario
+                    Usuario miusu = new Usuario(nombreUsu, apellidoUsu, fNacer, correoElec, contrasena);
                     listado.add(miusu);
+                    System.out.println("Usuario añadido exitosamente ");
                 }
                 case 2 -> {
                     listarUsuario(listado);
@@ -81,4 +99,14 @@ public class Lab1P2_SheyllaCortez {
         }
     }
 
+    //Método para validar el correo electronico - boolean para jugar con valores true or false
+    private static boolean esValido(String correoElec) {
+        for (int i = 0; i < correoElec.length(); i++) {
+            char caracAscii = correoElec.charAt(i);
+            if ((caracAscii < 'a' || caracAscii > 'z') && (caracAscii < 'A' || caracAscii > 'Z') && (caracAscii < '0' || caracAscii > '9') && (caracAscii != '-') && (caracAscii != '_') && (caracAscii != '&') && (caracAscii != '$') && (caracAscii != '%')) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

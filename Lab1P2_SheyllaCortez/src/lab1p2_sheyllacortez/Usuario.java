@@ -9,15 +9,20 @@ package lab1p2_sheyllacortez;
  * @author DELL
  */
 public class Usuario {
+    String nombreUsu;
+    String apellidoUsu;
     String fNacimiento;
     String correo;
     String contrasena;
 
-    public Usuario(String fNacimiento, String correo, String contrasena) {
+    public Usuario(String nombreUsu, String apellidoUsu, String fNacimiento, String correo, String contrasena) {
+        this.nombreUsu = nombreUsu;
+        this.apellidoUsu = apellidoUsu;
         this.fNacimiento = fNacimiento;
         this.correo = correo;
         this.contrasena = contrasena;
     }
+
 
     public String getfNacimiento() {
         return fNacimiento;
@@ -42,6 +47,24 @@ public class Usuario {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
+
+    public String getNombreUsu() {
+        return nombreUsu;
+    }
+
+    public void setNombreUsu(String nombreUsu) {
+        this.nombreUsu = nombreUsu;
+    }
+
+    public String getApellidoUsu() {
+        return apellidoUsu;
+    }
+
+    public void setApellidoUsu(String apellidoUsu) {
+        this.apellidoUsu = apellidoUsu;
+    }
+    
+    
 
     @Override
     public String toString() {
