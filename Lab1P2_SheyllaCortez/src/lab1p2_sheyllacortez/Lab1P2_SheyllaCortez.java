@@ -110,7 +110,37 @@ public class Lab1P2_SheyllaCortez {
                         System.out.println("Ingrese su contrasena: ");
                         contrasena = entrada.nextLine();
                     }
-                    
+
+                    //Que la contraseña contenga numeros
+                    boolean contraNumeros = false;
+                    for (int i = 0; i < correoElec.length(); i++) {
+                        if (correoElec.charAt(i) >= '0' && correoElec.charAt(i) <= '9') {
+                            contraNumeros = true;
+                            break;
+                        }
+                    }
+                    if (!contraNumeros) {
+                        System.out.println("Su contrasena no contiene numeros ");
+                        System.out.println("Ingrese su contrasena: ");
+                        contrasena = entrada.nextLine();
+                    }
+
+                    //Que la contrasena contenga simbolos validos 
+                    // Verificamos que la contraseña contenga al menos un símbolo
+                    boolean misSimbolos = false;
+                    for (int i = 0; i < correoElec.length(); i++) {
+                        if (correoElec.charAt(i) == '!' || correoElec.charAt(i) == '?' || correoElec.charAt(i) == '<' || correoElec.charAt(i) == '>' || correoElec.charAt(i) == '$' || correoElec.charAt(i) == '%') {
+                            misSimbolos = true;
+                            break;
+                        }
+                    }
+                    if (!misSimbolos) {
+                        System.out.println("Contrasena sin simbolos ");
+                        System.out.println("Ingrese su contrasena: ");
+                        contrasena = entrada.nextLine();
+                    }
+
+                    //Al llegar aca el correo, fnacimiento y contrasena han sido validados 
                     //Si todos los factores requeridos son aceptables se crea el usuario
                     Usuario miusu = new Usuario(nombreUsu, apellidoUsu, fNacer, correoElec, contrasena);
                     listado.add(miusu);
@@ -120,7 +150,7 @@ public class Lab1P2_SheyllaCortez {
                     listarUsuario(listado);
                 }
                 case 3 -> {
-
+                    //No creado
                 }
                 case 4 -> {
                     System.out.println("Que le vaya bien instructor");
